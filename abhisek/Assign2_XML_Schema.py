@@ -2,13 +2,7 @@ import json
 import sys
 import xml.etree.cElementTree as ET
 
-'''print 'Number of arguments:', len(sys.argv), 'arguments.'
-argv_list = sys.argv
-print 'Argument List:', argv_list
-print argv_list[1]
-json1_file = open(str(argv_list[1]))'''
-
-json1_file = open('json1.json', 'r')
+json1_file = open(str(argv_list[1]), 'r')
 json1_str = json1_file.read()
 print json1_str
 json1_data = json.loads(json1_str)
