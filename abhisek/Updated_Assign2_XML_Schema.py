@@ -35,7 +35,7 @@ output_file = out_XML_file + ".xml"			# String concatenation for .xml extension
 print output_file
 XML1_file = open(str(output_file), 'w')
 
-					# Creation of customized schema to create XML file from user given json file data
+# Creation of customized schema to create XML file from user given json file data
 Models = ET.Element("Models", xmlns="http://indivo.org/vocab/xml/documents#")
 Model = 0
 for i in range(len(json1_key_order)):

@@ -41,7 +41,7 @@ json1_data = json.loads(json1_str)
 print json1_data
 XML_for_JSON = json2xml(json1_data)
 print(XML_for_JSON)
-out_XML_file = raw_input("Enter the no. of tasks=")
+out_XML_file = raw_input("Enter the output file name=")
 print out_XML_file
 XML1_file = open(str(out_XML_file), 'w')
 XML1_file.write(XML_for_JSON)
