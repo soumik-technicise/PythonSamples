@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Models xmlns="http://indivo.org/vocab/xml/documents#">
+    {% for model in Model_Object_list %}
+    <Model name="{{model['__modelname__']}}">
+        <Field name="provider_first_name">{{ model['provider_first_name'] }}</Field>
+        <Field name="provider_last_name">{{ model['provider_last_name'] }}</Field>
+        <Field name="provider_npi">{{ model['provider_npi'] }}</Field>
+        <Field name="provider_type">{{ model['provider_type'] }}</Field>
+    </Model>
+    {% endfor %}
+</Models>
