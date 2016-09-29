@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Models xmlns="http://indivo.org/vocab/xml/documents#">
+{% if json_dict['__modelname__'] != ''%}
+    <Model name="{{json_dict['__modelname__']}}">
+	{% for element in json_dict %}
+	<Field name='{{ element }}'>{{ json_dict[element] }}</Field>
+    	{% endfor %}
+    </Model>
+</Models>
+{% endif %}
