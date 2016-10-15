@@ -5,11 +5,18 @@ import datetime # To estimate time duration
 import time
 
 def create_Dynamic_xml_dict(Object_dict, Output_XML_file, XML_template):
-   
-    print XML_template			     # Location of our XML template
-    Location_list = XML_template.split("/")  # Location_list holds sub-directory and xml template as elements 
-    env = jinja2.Environment(loader=jinja2.FileSystemLoader(["./" + Location_list[0]])) #  # Create environmental variable in the sub-directory of xml teplete  
-    Our_template = env.get_template(Location_list[1]) # Get our template with name as Location_list[1] using environment variable env at sub-directory as Location_list[0]  
+    # Create environmental variable in the location of our template (/template/jsontoxml_template.xml)
+    print XML_template
+    Location_list = XML_template.split("/")
+    print Location_list
+    sub_directory = "./" + Location_list[0]
+    print sub_directory
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader(["./" + Location_list[0]]))
+    Our_template = env.get_template(Location_list[1]) # Get our template jsontoxml_template.xml from env
+
+    #env = jinja2.Environment(loader=jinja2.FileSystemLoader(["./template"]))
+    #Our_template = env.get_template("jsontoxml_template.xml") # Get our template jsontoxml_template.xml from env
+    #Our_template = jinja2.Template(XML_template) # Get our template jsontoxml_template.xml from env
 
     template_XML_dict = dict()
     for element in Object_dict: # Object_dict is a dictionary created from json data 
@@ -17,7 +24,6 @@ def create_Dynamic_xml_dict(Object_dict, Output_XML_file, XML_template):
 		model_name = Object_dict[element]   # model_name is a variable used in our template (jsontoxml_template.xml)
 	else:
 		template_XML_dict[element] = Object_dict[element] # template_XML_dict is a dictionary used in our template (jsontoxml_template.xml) 
-
     result = Our_template.render(template_XML_dict=template_XML_dict, model_name =model_name) # Update template (jsontoxml_template.xml)with present 
     # values of template_XML_dict and model_name w.r.t present json file
 

@@ -17,8 +17,14 @@ def create_Dynamic_xml_dict(Object_dict, fp_out):
     # Create environmental variable in the location of our template (/templete/model.xml)
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(["./templete"]))
     template = env.get_template("More_Generic_Template.xml") # Get our template model.xml from env
-    json_dict = Object_dict # Value (Object_list), a list is assigned to jinja variable Model_Object_list in model.xml  
-    result = template.render(json_dict=json_dict) # General rendering or imparting changes on Model_Object_list variable 
+    json_dict = dict()
+    for element in Object_dict:
+	if element == '__modelname__':
+		model_name = Object_dict[element]
+	else:
+		json_dict[element] = Object_dict[element]
+    #json_dict = Object_dict # Value (Object_list), a list is assigned to jinja variable Model_Object_list in model.xml  
+    result = template.render(json_dict=json_dict, model_name =model_name) # General rendering or imparting changes on Model_Object_list variable 
     fp_out.write(result) # New modified XML file is created with user given name
     
 
